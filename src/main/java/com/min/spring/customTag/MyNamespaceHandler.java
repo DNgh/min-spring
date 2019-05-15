@@ -4,7 +4,7 @@ import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
 /**
  * <p>Title: MyNamespaceHandler</p>
- * <p>Description: </p>
+ * <p>Description: 自定义标签命名空间处理器</p>
  * @author	zhouzm
  * @date	2019年5月14日
  * @version 1.0

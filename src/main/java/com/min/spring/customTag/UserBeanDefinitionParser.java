@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 
 /**
  * <p>Title: UserBeanDefinitionParser</p>
- * <p>Description: </p>
+ * <p>Description: 自定义标签解析器</p>
  * @author	zhouzm
  * @date	2019年5月14日
  * @version 1.0
