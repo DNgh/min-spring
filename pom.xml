@@ -34,6 +34,8 @@
 	<hibernate.version>4.3.8.Final</hibernate.version>
 	<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
 	<hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
+	<!-- mybatis版本号 -->
+	<mybatis.version>3.4.5</mybatis.version>
 	<!-- aspectj版本号 -->
 	<aspectj.version>1.8.9</aspectj.version>
 	<!-- mysql驱动版本号 -->
@@ -56,6 +58,16 @@
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
 		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis.version}</version>
+    </dependency>
+    <dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql-driver.version}</version>
 	</dependency>
     <dependency>
       <groupId>junit</groupId>
