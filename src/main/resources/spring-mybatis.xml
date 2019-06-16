@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- spring整合mybatis -->
+    <!-- 加载classpath下的db.properties文件，里面配了数据库连接的一些信息 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="maxTotal" value="10" />
+        <property name="maxIdle" value="5" />
+        <property name="minIdle" value="1" />
+        <property name="defaultAutoCommit" value="true" />
+    </bean>
+
+    <!-- 配置sqlSessionFactory，SqlSessionFactoryBean是用来产生sqlSessionFactory的 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 加载mybatis的全局配置文件，放在classpath下的mybatis文件夹中了 -->
+        <property name="configLocation" value="mybatis-config2.xml" />
+        <!-- 加载数据源，使用上面配置好的数据源 -->
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+	
+	<!-- MapperFactoryBean：根据mapper接口生成的代理对象 -->
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.min.spring.mybatis.UserMapper"/>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+</beans>
