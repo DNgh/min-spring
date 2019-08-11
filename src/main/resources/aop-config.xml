@@ -15,7 +15,7 @@
 		<constructor-arg value="#{T(System).out}"/>
 	</bean>
 	
-	<bean id="minstrel" class="com.min.spring.aop.Minstrel">
+	<!-- <bean id="minstrel" class="com.min.spring.aop.Minstrel">
 		<constructor-arg value="#{T(System).out}"/>
 	</bean>
 	
@@ -24,6 +24,20 @@
 			<aop:pointcut expression="execution(* *.embarkOnQuest(..))" id="embark"/>
 			<aop:before pointcut-ref="embark" method="singBeforeQuest"/>
 			<aop:after pointcut-ref="embark" method="singAfterQuest"/>
+		</aop:aspect>
+	</aop:config> -->
+	
+	<bean id="advice" class="com.min.spring.aop.Advice">
+		<constructor-arg value="#{T(System).out}"/>
+	</bean>
+	<aop:config>
+		<aop:aspect ref="advice">
+			<aop:pointcut expression="execution(* *.embarkOnQuest(..))" id="embark"/>
+			<aop:before pointcut-ref="embark" method="singBeforeQuest"/>
+			<aop:after pointcut-ref="embark" method="singAfterQuest"/>
+			<aop:after-returning pointcut-ref="embark" method="singAfterReturningQuest"/>
+			<aop:after-throwing pointcut-ref="embark" method="singAfterThrowingQuest"/>
+			<aop:around pointcut-ref="embark" method="singAroundQuest"/>
 		</aop:aspect>
 	</aop:config>
 	

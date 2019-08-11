@@ -9,6 +9,11 @@ public class BraveKnight implements Knight {
   }
 
   public void embarkOnQuest() {
+	//测试异常通知
+//	int[] arr = {1,2,3,4,5};
+//	System.out.println(arr[7]);
+	
+	System.out.println("embarkOnQuest()");
     quest.embark();
   }
 
