@@ -7,26 +7,29 @@ import com.min.spring.pojo.User;
 import com.min.spring.pojo.UserService;
 
 /**
- * 经典AOP通知执行顺序
- * 前置通知
+ * @AspectJ注解通知执行顺序
  * 环绕通知
+ * 前置通知
  * 执行方法
  * 环绕通知
- * 返回通知
  * 后置通知
+ * 返回通知
  * 
- * 异常执行顺序：
- * 前置通知
+ * 多个切面通过@Order指定顺序
+ * 
+ * 异常执行顺序
  * 环绕通知
+ * 前置通知
+ * 后置通知
  * 异常通知
  * @author zhouzm
  *
  */
-public class TestClassicAopConfig {
+public class TestAspectjAopConfig {
 	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:classic-aop-config.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:aspectj-aop-config.xml");
 		User user = (User)context.getBean("user");
-		UserService proxy = (UserService)context.getBean("proxy");
+		UserService proxy = (UserService)context.getBean("userService");
 		proxy.addUser(user);
 		proxy.updateUser(null);
 		context.close();
