@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="user" class="com.min.spring.pojo.User">
+		<property name="name" value="min"/>
+		<property name="sex" value="male"/>
+		<property name="age" value="12"/>
+	</bean>
+	
+	<bean id="userService" class="com.min.spring.pojo.UserServiceImpl"/>
+		
+	<bean id="logBeforeMethod" class="com.min.spring.aop.log.LogBeforeMethod"/>
+	<bean id="logAfterMethod" class="com.min.spring.aop.log.LogAfterMethod"/>
+	<bean id="logAroundMethod" class="com.min.spring.aop.log.LogAroundMethod"/>
+	<bean id="logThrowingMethod" class="com.min.spring.aop.log.LogThrowingMethod"/>
+	
+	<!-- 经典切面配置方式 -->
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="userService"/>
+		<property name="proxyInterfaces">
+			<list>
+				<value>com.min.spring.pojo.UserService</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>logBeforeMethod</value>
+				<value>logAfterMethod</value>
+				<value>logAroundMethod</value>
+				<value>logThrowingMethod</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

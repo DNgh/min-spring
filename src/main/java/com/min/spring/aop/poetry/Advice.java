@@ -1,9 +1,9 @@
-package com.min.spring.aop;
+package com.min.spring.aop.poetry;
 
 import java.io.PrintStream;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-
+//5种通知
 public class Advice {
 
   private PrintStream stream;

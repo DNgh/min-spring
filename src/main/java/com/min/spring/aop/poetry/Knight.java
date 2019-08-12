@@ -1,4 +1,4 @@
-package com.min.spring.aop;
+package com.min.spring.aop.poetry;
 
 public interface Knight {
 

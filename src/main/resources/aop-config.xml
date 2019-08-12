@@ -7,15 +7,15 @@
 		http://www.springframework.org/schema/beans 
       http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="knight" class="com.min.spring.aop.BraveKnight">
+	<bean id="knight" class="com.min.spring.aop.poetry.BraveKnight">
 		<constructor-arg ref="quest"/>
 	</bean>
 	
-	<bean id="quest" class="com.min.spring.aop.SlayDragonQuest">
+	<bean id="quest" class="com.min.spring.aop.poetry.SlayDragonQuest">
 		<constructor-arg value="#{T(System).out}"/>
 	</bean>
 	
-	<!-- <bean id="minstrel" class="com.min.spring.aop.Minstrel">
+	<!-- <bean id="minstrel" class="com.min.spring.aop.poetry.Minstrel">
 		<constructor-arg value="#{T(System).out}"/>
 	</bean>
 	
@@ -27,9 +27,11 @@
 		</aop:aspect>
 	</aop:config> -->
 	
-	<bean id="advice" class="com.min.spring.aop.Advice">
+	<bean id="advice" class="com.min.spring.aop.poetry.Advice">
 		<constructor-arg value="#{T(System).out}"/>
 	</bean>
+	<!-- 纯POJO切面配置方式 -->
+	<!-- 五种通知配置方式 -->
 	<aop:config>
 		<aop:aspect ref="advice">
 			<aop:pointcut expression="execution(* *.embarkOnQuest(..))" id="embark"/>
