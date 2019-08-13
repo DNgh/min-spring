@@ -12,4 +12,9 @@ public class UserServiceImpl implements UserService {
 		System.out.println("update a user:["+user.getName()+"]");
 	}
 
+	@Override
+	public void info(int a) {
+		System.out.println("number:"+a);
+	}
+
 }

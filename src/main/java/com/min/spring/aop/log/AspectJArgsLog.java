@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+
+import com.min.spring.pojo.User;
 /**
  * @AspectJ注解通知执行顺序
  * 环绕通知
@@ -20,39 +22,37 @@ import org.aspectj.lang.annotation.Pointcut;
  *
  */
 @Aspect
-public class AspectJLog {
-	//针对某个方法
-	/*@Pointcut("execution(* *.addUser(..))")
-	private void add() {}*/
+public class AspectJArgsLog {
 	
-	//针对某个类中方法
-	@Pointcut("execution(* com.min.spring.pojo.*.*User(..))")
-	private void process() {}
+	//针对某个类
+	@Pointcut("execution(* com.min.spring.pojo.*.info(int))"
+			+ "&& args(number)")
+	private void process(int number) {}
 	
-	@Before("process()")
-	public void beforeAdvice() {
-		System.out.println("前置通知");
+	@Before("process(number)")
+	public void beforeAdvice(int number) {
+		System.out.println("前置通知:"+number);
 	}
 	
-	@Around("process()")
-	public void aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
-		System.out.println("环绕通知：方法执行前");
+	@Around("process(number)")
+	public void aroundAdvice(ProceedingJoinPoint pjp, int number) throws Throwable {
+		System.out.println("环绕通知：方法执行前,number:"+number);
 		pjp.proceed();
 		System.out.println("环绕通知：方法执行后");
 	}
 	
-	@AfterReturning(pointcut="process()", returning="retVal")
-	public void afterReturningAdvice(Object retVal) {
+	@AfterReturning(pointcut="process(number)", returning="retVal")
+	public void afterReturningAdvice(Object retVal, int number) {
 		System.out.println("返回通知："+retVal);
 	}
 	
-	@After("process()")
-	public void afterAdvice() {
+	@After("process(number)")
+	public void afterAdvice(int number) {
 		System.out.println("后置通知");
 	}
 	
-	@AfterThrowing(pointcut="process()", throwing="ex")
-	public void afterThrowingAdvice(Throwable ex) {
+	@AfterThrowing(pointcut="process(number)", throwing="ex")
+	public void afterThrowingAdvice(Throwable ex, int number) {
 		System.out.println("异常通知："+ex);
 	}
 }
