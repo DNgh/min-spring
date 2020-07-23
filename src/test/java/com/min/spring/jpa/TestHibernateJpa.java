@@ -15,7 +15,8 @@ import com.min.spring.jpa.dao.ArticleDao;
 import com.min.spring.jpa.entity.TmArticle;
 
 /**
- *    测试事务，persist、save方法。没提交事务前，id已经赋值，数据库没有数据。
+ *    测试事务，EntityManager.persist、JPARepository.save方法。
+ *    没提交事务前，id已经赋值，数据库没有数据。
  *    提交事务后，对象才保存到数据库。
  * @author zhouzm
  *
