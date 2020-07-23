@@ -52,7 +52,7 @@ public class TestHibernateJpa {
 	
 	
 	@Transactional
-	@Rollback(false)//禁止回退
+	@Rollback(false)//测试程序，添加事务，默认回退数据。此处禁止回退。
 	public void testJPA() {
 		TmArticle tmArticle = new TmArticle();
 		tmArticle.setContent("文章2：JPA");
