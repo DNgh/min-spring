@@ -66,6 +66,12 @@
 		<artifactId>spring-jdbc</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
+	<!-- Spring data jpa -->
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+		<version>${spring-jpa.version}</version>
+	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-aspects</artifactId>
@@ -77,6 +83,90 @@
 	    <version>${spring.version}</version>
 	    <scope>test</scope>
 	</dependency>
+	
+	<!-- querydsl -->
+	<dependency>
+		<groupId>com.querydsl</groupId>
+		<artifactId>querydsl-core</artifactId>
+		<version>${querydsl.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.querydsl</groupId>
+		<artifactId>querydsl-jpa</artifactId>
+		<version>${querydsl.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.querydsl</groupId>
+		<artifactId>querydsl-apt</artifactId>
+		<version>${querydsl.version}</version>
+	</dependency>
+
+	<!-- aspectj -->
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjrt</artifactId>
+		<version>${aspectj.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>${aspectj.version}</version>
+	</dependency>
+
+	<!--hibernate的包 -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
+		<exclusions>
+		 	<exclusion>
+	            <groupId>javassist</groupId>
+	            <artifactId>javassist</artifactId>
+	        </exclusion>
+		</exclusions>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>${hibernate.version}</version>
+		<exclusions>
+			<exclusion>
+				<artifactId>cglib</artifactId>
+				<groupId>cglib</groupId>
+			</exclusion>
+			<exclusion>
+				<artifactId>dom4j</artifactId>
+				<groupId>dom4j</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-validator</artifactId>
+		<version>${hibernate-validator.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate.javax.persistence</groupId>
+		<artifactId>hibernate-jpa-2.1-api</artifactId>
+		<version>${hibernate-jpa.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-ehcache</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+	
+	<dependency>
+	   <groupId>javax.el</groupId>
+	   <artifactId>javax.el-api</artifactId>
+	   <version>2.2.4</version>
+	</dependency>
+	<dependency>
+	   <groupId>org.glassfish.web</groupId>
+	   <artifactId>javax.el</artifactId>
+	   <version>2.2.4</version>
+	</dependency>
+	
 	<dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
