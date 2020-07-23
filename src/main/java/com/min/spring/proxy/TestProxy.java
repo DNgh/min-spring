@@ -14,5 +14,9 @@ public class TestProxy {
 		proxy.sayHello();
 		System.out.println(proxy);
 		System.out.println(proxy.getClass());
+		//再次生成代理对象
+		Subject proxy2 = (Subject)Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), handler);
+		System.out.println(proxy2);
+		System.out.println(proxy2.getClass());
 	}
 }
